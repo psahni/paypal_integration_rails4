@@ -22,6 +22,8 @@ end
 
 gem 'jquery-rails'
 
+
+gem 'activemerchant'      # http://activemerchant.org/
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
