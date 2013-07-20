@@ -34,4 +34,16 @@ PaypalRails4::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  ourApp::Application.configure do
+ 
+  # Some other stuff in development.rb
+  
+  # Force ActiveMerchant into test mode
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+  end
+  
+end
+
 end
