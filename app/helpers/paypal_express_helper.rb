@@ -16,7 +16,23 @@ module PaypalExpressHelper
       :items => get_items(cart),
     }
   end
- 
+
+  def get_order_info(gateway_response, cart)
+    subtotal, shipping, total = get_totals(cart)
+    {
+        shipping_address: gateway_response.address,
+        email: gateway_response.email,
+        name: gateway_response.name,
+        gateway_details: {
+            :token => gateway_response.token,
+            :payer_id => gateway_response.payer_id,
+        },
+        subtotal: subtotal,
+        shipping: shipping,
+        total: total,
+    }
+  end
+
   def get_shipping(cart)
     # define your own shipping rule based on your cart here
     # this method should return an integer
